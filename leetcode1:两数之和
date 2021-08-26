@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> ans;
+        for(int i = 0;i<nums.size();i++){
+            for(int j = i+1;j<nums.size();j++){
+                if(nums[i]+nums[j]==target){
+                ans.push_back(i);
+                ans.push_back(j);
+                return ans;
+            }
+        }
+        
+    }
+    return ans;
+    }
+};
+第一次return 是为了得到target值之后，就直接跳出，如果没有第一个return，只有第二个return，那么，将返回所有值等于target的情况，不符合题意。
+第二个return，是为了当没有结果匹配的时候 返回一个vector，为了与函数定义相适应。
