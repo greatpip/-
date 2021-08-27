@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+            int i = 0;
+            int j = 0 ;
+            if(needle.size() == 0)
+            return 0;
+            while(i<haystack.size()&&j<needle.size()) // 小于即可，不能等于  否则下面的j会越界，这样j=0 只会返回-1了。
+            {
+                if(haystack[i] == needle[j])
+                {
+                        i++; //一直匹配一直加
+                        j++;
+                }
+                else //不匹配的话 主串退回到开始的下一个位置；子串归零
+                {
+                        i= i-j+1;
+                        j =0;
+                }
+            }
+            if(j == needle.size())
+            {
+                return i-j;// 返回位置 由于i j都是跟随的，所以相减即为位置。
+            }
+                return -1;
+    }
+};
